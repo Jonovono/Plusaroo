@@ -1,0 +1,84 @@
+{
+  "name": "Plusaroo",
+  "productName": "Plusaroo",
+  "version": "2.0.0",
+  "author": {
+    "name": "Jordan Howlett",
+    "email": "jordan@howlett.sexy",
+    "url": "howlett.sexy"
+  },
+  "description": "Like Spotify songs easily from your Mac Menu Bar",
+  "main": "src/server/main.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "server": "electron .",
+    "inspect": "electron --inspect=5858 .",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "@svgr/webpack": "^5.4.0",
+    "applescript": "^1.0.0",
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.6",
+    "electron-log": "^4.2.1",
+    "electron-store": "^5.2.0",
+    "electron-util": "^0.14.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "spotify-node-applescript": "^1.1.1",
+    "spotify-web-api-js": "^1.4.0",
+    "spotify-web-api-node": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "electron": "^6.0.12",
+    "electron-builder": "^22.7.0",
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "resolve-url-loader": "^3.1.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "stylelint": "^13.6.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "yarn-upgrade-all": "^0.5.2"
+  },
+  "build": {
+    "appId": "io.howlett.plusaroo",
+    "productName": "Plusaroo",
+    "asarUnpack": [
+      "**/*.applescript"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "default",
+      "icon": "build/icons.icns"
+    },
+    "files": [
+      "**/*",
+      "build"
+    ],
+    "dmg": {
+      "title": "${productName}",
+      "icon": "disk.icns"
+    }
+  }
+}
