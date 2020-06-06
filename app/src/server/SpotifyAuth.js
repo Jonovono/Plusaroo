@@ -1,4 +1,4 @@
-const { Tray, Menu, BrowserWindow, app } = require('electron');
+const { Tray, Menu, BrowserWindow, app, powerMonitor } = require('electron');
 const path = require('path');
 const querystring = require('querystring');
 const Url = require('url');
@@ -104,6 +104,11 @@ class SpotifyAuth {
 
   initialize = async () => {
     await this.checkAccess();
+
+    powerMonitor.on('resume', () => {
+      log.info('Resuming from Sleep');
+      this.refreshAccessToken();
+    });
 
     setInterval(this.refreshAccessToken, 1000 * 1500);
   };

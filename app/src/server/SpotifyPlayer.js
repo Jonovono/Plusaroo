@@ -61,10 +61,12 @@ class SpotifyPlayer {
     try {
       await spotifyApi.addToMySavedTracks([trackId]);
     } catch (error) {
+      log.info('Could not save song', error);
       generateNotification(
         'Something went wrong',
         'Could not save song to Spotify. Please email jordan@howlett.sexy and he will try and fix it.'
       );
+      return;
     }
 
     generateNotification('Plusaroo', `${artist}: ${name} => Saved! 🎵`);
