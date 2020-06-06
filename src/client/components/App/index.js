@@ -1,8 +1,6 @@
 import React from 'react';
-import styles from './styles.sass';
+import './styles.css';
 
-const App = () => (
-  <div className={styles.app}>Electron Minimal boilerplate</div>
-);
+const App = () => <div className="app">PLUSAROO</div>;
 
 export default App;

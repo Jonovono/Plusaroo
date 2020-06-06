@@ -7,49 +7,33 @@ module.exports = {
   entry: ['babel-polyfill', './src/client/index.js'],
   output: {
     path: path.join(__dirname, outputDirectory),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader'
-      }
-    },
-    {
-      test: /\.sass|scss$/,
-      use: [
-        'style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            modules: true,
-            localIdentName: '[local]--[hash:base64:5]',
-          },
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
         },
-        'resolve-url-loader',
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-            sourceMapContents: false,
-          },
-        },
-      ],
-    },
-    {
-      test: /\.(png|woff|woff2|eot|ttf)$/,
-      loader: 'url-loader?limit=100000'
-    },
-    {
-      test: /.svg$/,
-      use: ['@svgr/webpack'],
-    },
-    ]
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf)$/,
+        loader: 'url-loader?limit=100000',
+      },
+      {
+        test: /.svg$/,
+        use: ['@svgr/webpack'],
+      },
+    ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
   devServer: {
     port: 3000,
@@ -59,6 +43,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-    })
-  ]
+    }),
+  ],
 };
