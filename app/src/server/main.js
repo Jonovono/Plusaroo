@@ -6,6 +6,7 @@ const Store = require('electron-store');
 const TrayGenerator = require('./TrayGenerator');
 const SpotifyAuth = require('./SpotifyAuth');
 const SpotifyPlayer = require('./SpotifyPlayer');
+const log = require('electron-log');
 
 const icons = path.join(__dirname, './assets/AppIcon.appiconset');
 
@@ -61,6 +62,12 @@ app.on('ready', async () => {
   );
 
   globalShortcut.register('Control + Option + P', () => player.saveSong());
+
+  const { powerMonitor } = require('electron');
+  powerMonitor.on('resume', () => {
+    log.info('Resuming from Sleep');
+    spotifyAuth.refreshAccessToken();
+  });
 
   tray.on('click', () => player.saveSong());
 });
