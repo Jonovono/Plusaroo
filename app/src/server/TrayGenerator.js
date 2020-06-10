@@ -1,7 +1,7 @@
 const { Tray, Menu, Notification } = require('electron');
 const path = require('path');
 
-const unlikedAsset = path.join(__dirname, './assets/unliked.png');
+const unlikedAsset = path.join(__dirname, './assets/unlikedblackTemplate.png');
 const likedAsset = path.join(__dirname, './assets/liked.png');
 
 class TrayGenerator {
